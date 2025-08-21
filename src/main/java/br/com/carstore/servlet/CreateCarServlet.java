@@ -15,10 +15,11 @@ public class CreateCarServlet extends HttpServlet {
 
         String carName = request.getParameter("car-name");
 
-        System.out.println(carName);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
 
-        request.getRequestDispatcher("index.html").forward(request, response);
+        String jsonResponse = String.format("{\"carName\": \"%s\", \"status\": \"registered\"}", carName);
 
+        response.getWriter().write(jsonResponse);
     }
-
 }
